@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -21,13 +25,16 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    public Product() {
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "purchase_list",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "purchase_id")
+    )
+    private List<Purchase> purchaseList;
 
-    public Product(String title, int price) {
-        this.title = title;
-        this.price = price;
-    }
+
+    public Product() {}
 
     public Integer getId() {
         return id;
@@ -51,5 +58,22 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public List<Purchase> getPurchaseList() {
+        return purchaseList;
+    }
+
+    public void setPurchaseList(List<Purchase> purchaseList) {
+        this.purchaseList = purchaseList;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
