@@ -1,55 +1,37 @@
 package com.eddi;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class MainApplication {
     public static void main(String[] args) {
-        /*String operation = args[2];
+        /*String type = args[2];
         String inputFile = args[3];
         String outputFile = args[4];*/
-
         String type = "search";
 
-        /*String json = null;
+        String jsonInput = null;
         try {
-            json = new Scanner(new File("/home/eduard/projects/Purchase-accounting-service/input.json")).useDelimiter("\\Z").next();
+            jsonInput = new Scanner(new File("/home/eduard/projects/Purchase-accounting-service/input_stat.json")).useDelimiter("\\Z").next();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        CriteriaSet criterias = gson.fromJson(jsonInput, CriteriaSet.class);
+        System.out.println(criterias);
 
-        JSONObject myJsonobject = new JSONObject(json);
-        System.out.println(myJsonobject.toString());*/
-
-        JSONParser parser = new JSONParser();
-        try {
-            Object object = parser.parse(new FileReader("/home/eduard/projects/Purchase-accounting-service/input.json"));
-            JSONObject jsonObject =  (JSONObject)object;
-
-            List<Object> criteriaList = new ArrayList<>();
-
-            JSONArray criterias = (JSONArray) jsonObject.get("criteria");
-            Iterator criteriaIterator = criterias.iterator();
-            while (criteriaIterator.hasNext()) {
-                JSONObject criteria = (JSONObject) criteriaIterator.next();
-                System.out.println(criteria);
-                criteriaList.add(criteria);
-            }
-        }catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
 
 
         if(type == "search") {
@@ -64,15 +46,40 @@ public class MainApplication {
                 session = sessionFactory.getCurrentSession();
                 session.beginTransaction();
 
-                String sql = "SELECT * FROM purchases";
-                SQLQuery query = session.createSQLQuery(sql);
-                query.addEntity(Purchase.class);
-                List results = query.list();
+                //String sql = "SELECT * FROM purchases";
+                SQLQuery query_1 = session.createSQLQuery(com.eddi.SQLQuery.findByCustomerLastName);
+                query_1.addEntity(Purchase.class);
+                List listFindByCustomerLastName = query_1.list();
 
-                for (Object p: results
+                SQLQuery query_2 = session.createSQLQuery(com.eddi.SQLQuery.findByTitleProductAndQuantityPurchased);
+                query_2.addEntity(Purchase.class);
+                List listFindByTitleProductAndQuantityPurchased = query_2.list();
+
+                /*SQLQuery query_3 = session.createSQLQuery(com.eddi.SQLQuery.findByMinExpensesAndMaxExpenses);
+                query_2.addEntity(Purchase.class);
+                List listFindByMinExpensesAndMaxExpenses = query_3.list();
+
+                SQLQuery query_4 = session.createSQLQuery(com.eddi.SQLQuery.findByBadCustomers);
+                query_2.addEntity(Purchase.class);
+                List listFindByBadCustomers = query_4.list();*/
+
+                List<Object> resultList = new ArrayList<>();
+                resultList.add(listFindByCustomerLastName);
+                resultList.add(listFindByTitleProductAndQuantityPurchased);
+                //resultList.add(listFindByMinExpensesAndMaxExpenses);
+                //resultList.add(listFindByBadCustomers);
+
+                for (Object p: listFindByCustomerLastName
                      ) {
                     Purchase purchase = (Purchase) p;
                     System.out.println(purchase);
+                }
+
+                try {
+                    gson.toJson(resultList,
+                            new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
                 session.getTransaction().commit();
@@ -96,8 +103,16 @@ public class MainApplication {
                 session = sessionFactory.getCurrentSession();
                 session.beginTransaction();
 
-                Product productFromDB = session.get(Product.class, 1);
-                System.out.println(productFromDB);
+                //String sql = "SELECT * FROM purchases";
+                SQLQuery query = session.createSQLQuery(com.eddi.SQLQuery.findByDateBetween);
+                query.addEntity(Purchase.class);
+                List listFindByDateBetween = query.list();
+
+                try {
+                    gson.toJson(listFindByDateBetween, new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 session.getTransaction().commit();
             } finally {
@@ -110,7 +125,13 @@ public class MainApplication {
         }
 
         else {
-            type = "error";
+            String json = "\"type\": \"error\",\n\"message\": \"Invalid date format\"";
+
+            try {
+                gson.toJson(json, new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
