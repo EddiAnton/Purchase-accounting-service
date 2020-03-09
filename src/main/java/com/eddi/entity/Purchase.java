@@ -1,4 +1,4 @@
-package com.eddi;
+package com.eddi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +37,12 @@ public class Purchase {
     private List<Product> productList;
 
     public Purchase() {}
+
+    public Purchase(Customer customer, Date dateOfPurchase, List<Product> productList) {
+        this.customer = customer;
+        this.dateOfPurchase = dateOfPurchase;
+        this.productList = productList;
+    }
 
     public Integer getId() {
         return id;

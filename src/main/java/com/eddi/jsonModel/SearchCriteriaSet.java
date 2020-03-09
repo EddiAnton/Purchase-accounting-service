@@ -1,11 +1,11 @@
-package com.eddi;
+package com.eddi.jsonModel;
 
 import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CriteriaSet {
+public class SearchCriteriaSet {
     List<Criteria> criteria = new ArrayList<>();
 
     @Override

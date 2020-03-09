@@ -1,6 +1,5 @@
-package com.eddi;
+package com.eddi.jsonModel;
 
-import java.util.Date;
 
 public class Criteria {
     private String customerLastName;
@@ -9,8 +8,6 @@ public class Criteria {
     private Integer minExpenses;
     private Integer maxExpenses;
     private Integer badCustomers;
-    private Date startDate;
-    private Date endDate;
 
     public String getCustomerLastName() {
         return customerLastName;
@@ -60,22 +57,6 @@ public class Criteria {
         this.badCustomers = badCustomers;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
     @Override
     public String toString() {
         return "Criteria{" +
@@ -85,8 +66,6 @@ public class Criteria {
                 ", minExpenses=" + minExpenses +
                 ", maxExpenses=" + maxExpenses +
                 ", badCustomers=" + badCustomers +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
                 '}';
     }
 }

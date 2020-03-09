@@ -1,4 +1,4 @@
-package com.eddi;
+package com.eddi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

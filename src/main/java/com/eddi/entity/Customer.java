@@ -1,4 +1,4 @@
-package com.eddi;
+package com.eddi.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +22,11 @@ public class Customer {
     private String lastName;
 
     public Customer() {}
+
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Integer getId() {
         return id;
