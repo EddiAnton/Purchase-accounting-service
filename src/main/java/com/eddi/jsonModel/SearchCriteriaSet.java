@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchCriteriaSet {
-    List<Criteria> criteria = new ArrayList<>();
+    public List<Criteria> criteria = new ArrayList<>();
 
     @Override
     public String toString() {

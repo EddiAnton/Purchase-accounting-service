@@ -3,6 +3,7 @@ package com.eddi.service;
 import com.eddi.entity.Customer;
 import com.eddi.entity.Product;
 import com.eddi.entity.Purchase;
+import com.eddi.jsonModel.Criteria;
 import com.eddi.jsonModel.SearchCriteriaSet;
 import com.eddi.jsonModel.StatCriteriaSet;
 import com.google.gson.Gson;
@@ -21,19 +22,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.eddi.service.SQLQuery.*;
+
 public class SQLService {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     SearchCriteriaSet searchCriteriaSet;
     StatCriteriaSet statCriteriaSet;
 
-    public void searchQuery() {
+    public void searchQuery(String inputFile, String outputFile) {
         try {
             searchCriteriaSet = gson.fromJson(new JsonReader(new FileReader
-                            (new File("/home/eduard/projects/Purchase-accounting-service/input.json"))),
+                            (new File("/home/eduard/projects/Purchase-accounting-service/" + inputFile))),
                     SearchCriteriaSet.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
         System.out.println(searchCriteriaSet);
 
         SessionFactory sessionFactory = new Configuration()
@@ -47,37 +51,42 @@ public class SQLService {
             session = sessionFactory.getCurrentSession();
             session.beginTransaction();
 
-            String customerLastName = "Ivanov";
-            String sql = "SELECT * FROM purchases";
-            SQLQuery query_1 = session.createSQLQuery(com.eddi.service.SQLQuery.findByCustomerLastName);
-            query_1.setParameter("customerLastName", customerLastName);
-            query_1.addEntity(Customer.class);
-            List listFindByCustomerLastName = query_1.list();
-
-            String titleProduct = "Milk";
-            int quantityPurchased = 2;
-            SQLQuery query_2 = session.createSQLQuery(com.eddi.service.SQLQuery.findByTitleProductAndQuantityPurchased);
-            query_2.setParameter("titleProduct", titleProduct);
-            query_2.setParameter("quantityPurchased", quantityPurchased);
-            query_2.addEntity(Customer.class);
-            List listFindByTitleProductAndQuantityPurchased = query_2.list();
-
-            /*SQLQuery query_3 = session.createSQLQuery(com.eddi.service.SQLQuery.findByMinExpensesAndMaxExpenses);
-            query_2.addEntity(Purchase.class);
-            List listFindByMinExpensesAndMaxExpenses = query_3.list();
-
-            SQLQuery query_4 = session.createSQLQuery(com.eddi.service.SQLQuery.findByBadCustomers);
-            query_2.addEntity(Purchase.class);
-            List listFindByBadCustomers = query_4.list();*/
-
             List<Object> resultList = new ArrayList<>();
-            resultList.add(listFindByCustomerLastName);
-            resultList.add(listFindByTitleProductAndQuantityPurchased);
-            //resultList.add(listFindByMinExpensesAndMaxExpenses);
-            //resultList.add(listFindByBadCustomers);
+
+            for (Criteria criteria : searchCriteriaSet.criteria) {
+                SQLQuery query = null;
+                List<Customer> list = new ArrayList<>();
+
+                    // Search by customer last name
+                if (criteria.getCustomerLastName() != null) {
+                    query = session.createSQLQuery(findByCustomerLastName);
+                    query.setParameter("customerLastName", criteria.getCustomerLastName());
+
+                    // Search by title of product and quantity of purchases
+                } else if (criteria.getTitleProduct() != null && criteria.getQuantityPurchased() != null) {
+                    query = session.createSQLQuery(findByTitleProductAndQuantityPurchased);
+                    query.setParameter("titleProduct", criteria.getTitleProduct());
+                    query.setParameter("quantityPurchased", criteria.getQuantityPurchased());
+
+                    // Search by expenses
+                //} else if (criteria.getMinExpenses() != null && criteria.getMaxExpenses() != null) {
+                    //query = session.createSQLQuery(findByMinExpensesAndMaxExpenses);
+                    //query.setParameter("minExpenses", criteria.getMinExpenses());
+                    //query.setParameter("maxExpenses", criteria.getMaxExpenses());
+
+                    // Search by bad customers
+                //}else if (criteria.getBadCustomers() != null) {
+                    //query = session.createSQLQuery(findByBadCustomers);
+                    //query.setParameter("titleProduct", criteria.getBadCustomers());*/
+                }
+                query.addEntity(Customer.class);
+                list = query.list();
+                resultList.add(list);
+            }
 
             try {
-                gson.toJson(resultList, new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+                gson.toJson(resultList,
+                        new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -91,10 +100,10 @@ public class SQLService {
         }
     }
 
-    public void statQuery() {
+    public void statQuery(String inputFile, String outputFile) {
         try {
             statCriteriaSet = gson.fromJson(new JsonReader(new FileReader
-                            (new File("/home/eduard/projects/Purchase-accounting-service/input_stat.json"))),
+                            (new File("/home/eduard/projects/Purchase-accounting-service/" + inputFile))),
                     StatCriteriaSet.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -112,13 +121,15 @@ public class SQLService {
             session = sessionFactory.getCurrentSession();
             session.beginTransaction();
 
-            //String sql = "SELECT * FROM purchases";
-            SQLQuery query = session.createSQLQuery(com.eddi.service.SQLQuery.findByDateBetween);
+            SQLQuery query = session.createSQLQuery(findByDateBetween);
+            //query.setParameter("startDate", statCriteriaSet.getStartDate());
+            //query.setParameter("endDate", statCriteriaSet.getEndDate());
             query.addEntity(Purchase.class);
             List listFindByDateBetween = query.list();
 
             try {
-                gson.toJson(statCriteriaSet, new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+                gson.toJson(listFindByDateBetween,
+                        new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -132,11 +143,12 @@ public class SQLService {
         }
     }
 
-    public void exception() {
+    public void exception(String outputFile) {
         String json = "\"type\": \"error\",\n\"message\": \"Invalid date format\"";
 
         try {
-            gson.toJson(json, new FileWriter("/home/eduard/projects/Purchase-accounting-service/output.json"));
+            gson.toJson(json,
+                    new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
             System.out.println("It works!");
             System.out.println(json);
         } catch (IOException e) {

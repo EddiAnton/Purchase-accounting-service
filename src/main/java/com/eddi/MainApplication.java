@@ -4,18 +4,18 @@ import com.eddi.service.SQLService;
 
 public class MainApplication {
     public static void main(String[] args) {
-        /*String type = args[2];
-        String inputFile = args[3];
-        String outputFile = args[4];*/
-        String type = "search";
+        String inputFile = args[1];
+        String outputFile = args[2];
         SQLService service = new SQLService();
 
-        if(type == "search") {
-            service.searchQuery();
-        }else if(type == "stat") {
-            service.statQuery();
+        if(args[0].equals("search")) {
+            service.searchQuery(inputFile, outputFile);
+
+        }else if(args[0].equals("stat")) {
+            service.statQuery(inputFile, outputFile);
+
         }else {
-            service.exception();
+            service.exception(outputFile);
         }
     }
 }
