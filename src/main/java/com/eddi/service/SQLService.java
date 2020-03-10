@@ -14,6 +14,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -22,7 +23,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.eddi.service.SQLQuery.*;
+import static com.eddi.service.SQLQuery.findByCustomerLastName;
+import static com.eddi.service.SQLQuery.findByDateBetween;
+import static com.eddi.service.SQLQuery.findByTitleProductAndQuantityPurchased;
 
 public class SQLService {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -31,14 +34,12 @@ public class SQLService {
 
     public void searchQuery(String inputFile, String outputFile) {
         try {
-            searchCriteriaSet = gson.fromJson(new JsonReader(new FileReader
-                            (new File("/home/eduard/projects/Purchase-accounting-service/" + inputFile))),
+            searchCriteriaSet = gson.fromJson(
+                    new JsonReader(new FileReader(new File(inputFile))),
                     SearchCriteriaSet.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        System.out.println(searchCriteriaSet);
 
         SessionFactory sessionFactory = new Configuration()
                 .addAnnotatedClass(Purchase.class)
@@ -55,7 +56,7 @@ public class SQLService {
 
             for (Criteria criteria : searchCriteriaSet.criteria) {
                 SQLQuery query = null;
-                List<Customer> list = new ArrayList<>();
+                List<Object> list = new ArrayList<>();
 
                     // Search by customer last name
                 if (criteria.getCustomerLastName() != null) {
@@ -83,14 +84,14 @@ public class SQLService {
                 list = query.list();
                 resultList.add(list);
             }
-
             try {
-                gson.toJson(resultList,
-                        new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
+                String str = gson.toJson(resultList);
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+                writer.write(str);
+                writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             session.getTransaction().commit();
         } finally {
             sessionFactory.close();
@@ -102,13 +103,12 @@ public class SQLService {
 
     public void statQuery(String inputFile, String outputFile) {
         try {
-            statCriteriaSet = gson.fromJson(new JsonReader(new FileReader
-                            (new File("/home/eduard/projects/Purchase-accounting-service/" + inputFile))),
+            statCriteriaSet = gson.fromJson(new JsonReader(new FileReader(new File(inputFile))),
                     StatCriteriaSet.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(statCriteriaSet);
+        System.out.println(gson.toJson(statCriteriaSet));
 
         SessionFactory sessionFactory = new Configuration()
                 .addAnnotatedClass(Purchase.class)
@@ -128,12 +128,13 @@ public class SQLService {
             List listFindByDateBetween = query.list();
 
             try {
-                gson.toJson(listFindByDateBetween,
-                        new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
+                String str = gson.toJson(listFindByDateBetween);
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+                writer.write(str);
+                writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
             session.getTransaction().commit();
         } finally {
             sessionFactory.close();
@@ -144,13 +145,12 @@ public class SQLService {
     }
 
     public void exception(String outputFile) {
-        String json = "\"type\": \"error\",\n\"message\": \"Invalid date format\"";
-
+        String json = "\"type\": \"error\",\n\"message\": \"Invalid data format\"";
         try {
-            gson.toJson(json,
-                    new FileWriter("/home/eduard/projects/Purchase-accounting-service/" + outputFile));
-            System.out.println("It works!");
-            System.out.println(json);
+            String str = gson.toJson(json);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
+            writer.write(str);
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

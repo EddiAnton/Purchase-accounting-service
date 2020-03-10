@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8ea5c86-5538-4b81-9aa1-62ef22db8c9f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input.json" beforeDir="false" afterPath="$PROJECT_DIR$/input.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eddi/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eddi/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eddi/jsonModel/SearchCriteriaSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eddi/jsonModel/SearchCriteriaSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eddi/service/SQLQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eddi/service/SQLQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/output.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eddi/service/SQLService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eddi/service/SQLService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/Purchase-accounting-service.kotlin_module" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,18 +44,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../meeting_manager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.MainApplication">
+    <configuration name="MainApplication" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.eddi.MainApplication" />
-      <module name="Purchase-accounting-service" />
-      <option name="PROGRAM_PARAMETERS" value="stat input.json output.json " />
+      <module name="PurchaseAccountingService" />
+      <option name="PROGRAM_PARAMETERS" value="search input.json output.json " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.eddi.entity.*" />
@@ -66,9 +66,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PASTest.myTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Purchase-accounting-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.eddi.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.eddi" />
+      <option name="MAIN_CLASS_NAME" value="com.eddi.PASTest" />
+      <option name="METHOD_NAME" value="myTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Purchase-accounting-service-1.0-SNAPSHOT.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/target/Purchase-accounting-service-1.0-SNAPSHOT.jar" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/artifacts/test.jar" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.MainApplication" />
+      <item itemvalue="JAR Application.Purchase-accounting-service-1.0-SNAPSHOT.jar" />
+      <item itemvalue="JAR Application.test.jar" />
+      <item itemvalue="JUnit.PASTest.myTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainApplication" />
+        <item itemvalue="JUnit.PASTest.myTest" />
+        <item itemvalue="JAR Application.test.jar" />
+        <item itemvalue="JAR Application.Purchase-accounting-service-1.0-SNAPSHOT.jar" />
       </list>
     </recent_temporary>
   </component>
@@ -86,92 +119,88 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1518" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583790709277">
+    <state x="1681" y="29" width="799" height="839" key="#MainApplication" timestamp="1583843236525">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
-    <state x="1518" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790709277" />
+    <state x="1681" y="29" width="799" height="839" key="#MainApplication/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583843236525" />
+    <state x="1518" y="61" width="1092" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583862693118">
+      <screen x="1366" y="0" width="1440" height="900" />
+    </state>
+    <state x="1518" y="61" width="1092" height="721" key="#com.intellij.execution.impl.EditConfigurationsDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583862693118" />
+    <state x="1518" y="61" key="#com.intellij.execution.impl.EditConfigurationsDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583791782287" />
     <state x="1111" y="934" width="652" height="734" key="#com.intellij.ide.util.MemberChooser" timestamp="1583763418008">
       <screen x="655" y="900" width="1366" height="768" />
     </state>
     <state x="1847" y="60" width="652" height="777" key="#com.intellij.ide.util.MemberChooser/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583616728231" />
     <state x="1111" y="934" width="652" height="734" key="#com.intellij.ide.util.MemberChooser/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583763418008" />
-    <state x="1082" y="1025" width="530" height="598" key="FileChooserDialogImpl" timestamp="1583755029157">
-      <screen x="655" y="900" width="1366" height="768" />
+    <state x="1816" y="150" width="530" height="598" key="FileChooserDialogImpl" timestamp="1583842995955">
+      <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="427" y="257" key="FileChooserDialogImpl/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672026997" />
-    <state x="1816" y="150" width="530" height="598" key="FileChooserDialogImpl/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583607129995" />
+    <state x="1816" y="150" width="530" height="598" key="FileChooserDialogImpl/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583842995955" />
     <state x="1082" y="1025" key="FileChooserDialogImpl/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583755029157" />
-    <state width="1384" height="422" key="GridCell.Tab.0.bottom" timestamp="1583790936910">
-      <screen x="655" y="900" width="1366" height="768" />
+    <state width="1384" height="300" key="GridCell.Tab.0.bottom" timestamp="1583871994132">
+      <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.0.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465570" />
-    <state width="1384" height="214" key="GridCell.Tab.0.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617394874" />
-    <state width="1384" height="422" key="GridCell.Tab.0.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790936910" />
-    <state width="1384" height="422" key="GridCell.Tab.0.center" timestamp="1583790936910">
-      <screen x="655" y="900" width="1366" height="768" />
+    <state width="1384" height="300" key="GridCell.Tab.0.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583871994132" />
+    <state width="1384" height="304" key="GridCell.Tab.0.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583836274169" />
+    <state width="1384" height="300" key="GridCell.Tab.0.center" timestamp="1583871994132">
+      <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.0.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465570" />
-    <state width="1384" height="214" key="GridCell.Tab.0.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617394874" />
-    <state width="1384" height="422" key="GridCell.Tab.0.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790936910" />
-    <state width="1384" height="422" key="GridCell.Tab.0.left" timestamp="1583790936910">
-      <screen x="655" y="900" width="1366" height="768" />
+    <state width="1384" height="300" key="GridCell.Tab.0.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583871994132" />
+    <state width="1384" height="304" key="GridCell.Tab.0.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583836274168" />
+    <state width="1384" height="300" key="GridCell.Tab.0.left" timestamp="1583871994131">
+      <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.0.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465570" />
-    <state width="1384" height="214" key="GridCell.Tab.0.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617394873" />
-    <state width="1384" height="422" key="GridCell.Tab.0.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790936910" />
-    <state width="1384" height="422" key="GridCell.Tab.0.right" timestamp="1583790936910">
-      <screen x="655" y="900" width="1366" height="768" />
+    <state width="1384" height="300" key="GridCell.Tab.0.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583871994131" />
+    <state width="1384" height="304" key="GridCell.Tab.0.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583836274168" />
+    <state width="1384" height="300" key="GridCell.Tab.0.right" timestamp="1583871994132">
+      <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.0.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465570" />
-    <state width="1384" height="214" key="GridCell.Tab.0.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617394874" />
-    <state width="1384" height="422" key="GridCell.Tab.0.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790936910" />
-    <state width="1384" height="422" key="GridCell.Tab.1.bottom" timestamp="1583790920574">
+    <state width="1384" height="300" key="GridCell.Tab.0.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583871994132" />
+    <state width="1384" height="304" key="GridCell.Tab.0.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583836274168" />
+    <state width="1384" height="89" key="GridCell.Tab.1.bottom" timestamp="1583791786444">
       <screen x="655" y="900" width="1366" height="768" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.1.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465430" />
     <state width="1384" height="337" key="GridCell.Tab.1.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617384640" />
-    <state width="1384" height="422" key="GridCell.Tab.1.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790920574" />
-    <state width="1384" height="422" key="GridCell.Tab.1.center" timestamp="1583790920574">
+    <state width="1384" height="89" key="GridCell.Tab.1.bottom/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583791786444" />
+    <state width="1384" height="89" key="GridCell.Tab.1.center" timestamp="1583791786444">
       <screen x="655" y="900" width="1366" height="768" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.1.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465430" />
     <state width="1384" height="337" key="GridCell.Tab.1.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617384640" />
-    <state width="1384" height="422" key="GridCell.Tab.1.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790920574" />
-    <state width="1384" height="422" key="GridCell.Tab.1.left" timestamp="1583790920574">
+    <state width="1384" height="89" key="GridCell.Tab.1.center/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583791786444" />
+    <state width="1384" height="89" key="GridCell.Tab.1.left" timestamp="1583791786444">
       <screen x="655" y="900" width="1366" height="768" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.1.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465430" />
     <state width="1384" height="337" key="GridCell.Tab.1.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617384640" />
-    <state width="1384" height="422" key="GridCell.Tab.1.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790920574" />
-    <state width="1384" height="422" key="GridCell.Tab.1.right" timestamp="1583790920574">
+    <state width="1384" height="89" key="GridCell.Tab.1.left/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583791786444" />
+    <state width="1384" height="89" key="GridCell.Tab.1.right" timestamp="1583791786444">
       <screen x="655" y="900" width="1366" height="768" />
     </state>
     <state width="1310" height="255" key="GridCell.Tab.1.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@0.132.1366.768" timestamp="1583672465430" />
     <state width="1384" height="337" key="GridCell.Tab.1.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583617384640" />
-    <state width="1384" height="422" key="GridCell.Tab.1.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583790920574" />
-    <state x="1503" y="25" width="1155" height="848" key="Maven.ArtifactSearchDialog" timestamp="1583499554070">
+    <state width="1384" height="89" key="GridCell.Tab.1.right/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583791786444" />
+    <state x="1503" y="25" width="1155" height="848" key="Maven.ArtifactSearchDialog" timestamp="1583837228998">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
-    <state x="1503" y="25" width="1155" height="848" key="Maven.ArtifactSearchDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583499554070" />
-    <state x="1666" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1583342968407">
+    <state x="1503" y="25" width="1155" height="848" key="Maven.ArtifactSearchDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583837228998" />
+    <state x="1666" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1583836982784">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
-    <state x="1666" y="238" key="com.intellij.ide.util.TipDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583342968407" />
+    <state x="1666" y="238" key="com.intellij.ide.util.TipDialog/655.900.1366.768/0.132.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1583836982784" />
     <state x="1665" y="0" width="840" height="898" key="search.everywhere.popup" timestamp="1583782538362">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1665" y="0" width="840" height="898" key="search.everywhere.popup/655.900.1366.768/0.132.1366.768/1366.0.1440.900@655.900.1366.768" timestamp="1583782538362" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/eddi/service/SQLService.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="args[2]" language="JAVA" />
