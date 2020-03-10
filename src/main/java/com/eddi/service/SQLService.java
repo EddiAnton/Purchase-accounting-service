@@ -4,6 +4,7 @@ import com.eddi.entity.Customer;
 import com.eddi.entity.Product;
 import com.eddi.entity.Purchase;
 import com.eddi.jsonModel.Criteria;
+import com.eddi.jsonModel.JsonException;
 import com.eddi.jsonModel.SearchCriteriaSet;
 import com.eddi.jsonModel.StatCriteriaSet;
 import com.google.gson.Gson;
@@ -85,9 +86,8 @@ public class SQLService {
                 resultList.add(list);
             }
             try {
-                String str = gson.toJson(resultList);
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-                writer.write(str);
+                writer.write(gson.toJson(resultList));
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -128,9 +128,8 @@ public class SQLService {
             List listFindByDateBetween = query.list();
 
             try {
-                String str = gson.toJson(listFindByDateBetween);
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-                writer.write(str);
+                writer.write(gson.toJson(listFindByDateBetween));
                 writer.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -145,11 +144,10 @@ public class SQLService {
     }
 
     public void exception(String outputFile) {
-        String json = "\"type\": \"error\",\n\"message\": \"Invalid data format\"";
+        JsonException jsonException = new JsonException();
         try {
-            String str = gson.toJson(json);
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-            writer.write(str);
+            writer.write(gson.toJson(jsonException));
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
